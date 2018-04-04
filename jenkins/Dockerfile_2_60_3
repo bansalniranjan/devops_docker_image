@@ -79,19 +79,19 @@ RUN \
      /usr/local/bin/install-plugins.sh workflow-multibranch:2.16 && \
      /usr/local/bin/install-plugins.sh docker-workflow:1.15.1 && \
 #     /usr/local/bin/install-plugins.sh workflow-job:2.11 && \
-     /usr/local/bin/install-plugins.sh workflow-scm-step:2.6 && \
+     /usr/local/bin/install-plugins.sh workflow-scm-step:2.6
 
 user jenkins
 
 WORKDIR /var/jenkins_home
 
 # # Verify docker image
-RUN java -version && java -version 2>&1 | grep 1.8.0
-#     # verify plugin version
+RUN java -version && java -version 2>&1 | grep 1.8.0 && \
+    # verify plugin version
 #     echo "Check workflow-multibranch" && cksum /var/jenkins_home/plugins/workflow-multibranch.jpi | grep 1279782864 && \
-##     echo "Check docker-workflow" && cksum /var/jenkins_home/plugins/docker-workflow.jpi | grep 104179366 && \
-##     echo "Check workflow-job" && cksum /var/jenkins_home/plugins/workflow-job.jpi | grep 1507002043 && \
-##     echo "Check workflow-scm-step" && cksum /var/jenkins_home/plugins/workflow-scm-step.jpi | grep 1598367120
+     echo "Check docker-workflow" && cksum /var/jenkins_home/plugins/docker-workflow.jpi | grep 104179366 && \
+     echo "Check workflow-job" && cksum /var/jenkins_home/plugins/workflow-job.jpi | grep 1507002043 && \
+     echo "Check workflow-scm-step" && cksum /var/jenkins_home/plugins/workflow-scm-step.jpi | grep 1598367120
 
 HEALTHCHECK --interval=5m --timeout=3s \
             CMD curl -I http://localhost:8080 | grep "HTTP/1.1 403 Forbidden" || exit 1
