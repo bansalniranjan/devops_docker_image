@@ -15,7 +15,7 @@
 
 FROM ruby:2.4-alpine
 
-LABEL maintainer "Denny<contact@dennyzhang.com>"
+LABEL maintainer "Denny<https://www.dennyzhang.com/contact>"
 
 user root
 

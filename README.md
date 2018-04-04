@@ -1,8 +1,8 @@
-<a href="https://github.com/DennyZhang?tab=followers"><img align="right" width="200" height="183" src="https://www.dennyzhang.com/wp-content/uploads/denny/watermark/github.png" /></a>
+<a href="https://github.com/DennyZhang?tab=followers"><img align="right" width="200" height="183" src="https://raw.githubusercontent.com/USDevOps/mywechat-slack-group/master/images/fork_github.png" /></a>
 
 [![Build Status](https://travis-ci.org/DennyZhang/devops_docker_image.svg?branch=master)](https://travis-ci.org/DennyZhang/devops_docker_image)
 
-[![LinkedIn](https://raw.githubusercontent.com/USDevOps/mywechat-slack-group/master/images/linkedin.png)](https://www.linkedin.com/in/dennyzhang001) [![Github](https://raw.githubusercontent.com/USDevOps/mywechat-slack-group/master/images/github.png)](https://github.com/DennyZhang) [![Twitter](https://raw.githubusercontent.com/USDevOps/mywechat-slack-group/master/images/twitter.png)](https://twitter.com/dennyzhang001) [![Slack](https://raw.githubusercontent.com/USDevOps/mywechat-slack-group/master/images/slack.png)](https://goo.gl/ozDDyL)
+[![LinkedIn](https://raw.githubusercontent.com/USDevOps/mywechat-slack-group/master/images/linkedin.png)](https://www.linkedin.com/in/dennyzhang001) [![Github](https://raw.githubusercontent.com/USDevOps/mywechat-slack-group/master/images/github.png)](https://github.com/DennyZhang) <a href="https://www.dennyzhang.com/slack" target="_blank" rel="nofollow"><img src="http://slack.dennyzhang.com/badge.svg" alt="slack"/></a>
 
 - File me [tickets](https://github.com/DennyZhang/devops_docker_image/issues) or star [the repo](https://github.com/DennyZhang/devops_docker_image)
 
@@ -15,7 +15,7 @@
 ##         docker run -t -i --privileged -h mytest --name my-test denny/mytest:v1 /bin/bash
 ##
 ##  Commit local image:
-##    docker commit -m "Initial version" -a "Denny Zhang<contact@dennyzhang.com>" e955748a2634 denny/osc:v1
+##    docker commit -m "Initial version" -a "Denny Zhang<https://www.dennyzhang.com/contact>" e955748a2634 denny/osc:v1
 ##    # Get docker user credential first
 ##    docker login
 ##    docker push denny/mytest:v1
