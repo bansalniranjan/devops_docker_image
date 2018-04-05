@@ -4,7 +4,7 @@
 ##  Git link: https://github.com/DennyZhang/devops_docker_image/blob/tag_v5/jenkins/Dockerfile_1_0
 ##  Docker hub link:
 ##  Build docker image: docker build --no-cache -f Dockerfile_2_0 -t denny/jenkins:2.0 --rm=true .
-##  Start jenkins: docker run -p 8080:8080 -p 50000:50000 denny/jenkins:2.02
+##  Start jenkins: docker run -p 8080:8080 -p 50000:50000 denny/jenkins:2.0
 ##  Description: Manage via Jenkins GUI
 ##################################################
 # Base Docker image: https://hub.docker.com/_/jenkins/
@@ -20,13 +20,11 @@ ADD run_serverspec.sh /usr/sbin/run_serverspec.sh
 ADD gitconfig /var/jenkins_home/.gitconfig
 
 # Install jenkins plugins
-RUN \
-    chown jenkins:jenkins /var/jenkins_home/.gitconfig && \
-# Install serverspec
+RUN chown jenkins:jenkins /var/jenkins_home/.gitconfig && \
+    # Install serverspec
     apt-get install -y --no-install-recommends ruby rake && \
     echo "gem: --no-rdoc --no-ri" >> /etc/gemrc && \
     gem install serverspec -v 2.39.1 && chmod 755 /usr/sbin/run_serverspec.sh && \
- 
     # Install basic packages
     apt-get install -y netcat
 
@@ -35,10 +33,9 @@ user jenkins
 WORKDIR /var/jenkins_home
 
 # # Verify docker image
-RUN \
-     ruby --version && rake --version && gem list server && gem --version && \
-     ruby --version | grep "2.1.5" && gem --version | grep "2.2.2" && \
-     rake --version | grep "10.3.2" && gem list serverspec | grep "2.39.1"
+RUN  ruby --version && rake --version && gem list server && gem --version && \
+     ruby --version | grep "2.3.3" && gem --version | grep "2.5.2.1" && \
+     rake --version | grep "10.5.0" && gem list serverspec | grep "2.39.1"
 
 HEALTHCHECK --interval=5m --timeout=3s \
             CMD curl -I http://localhost:8080 | grep "HTTP/1.1 403 Forbidden" || exit 1
