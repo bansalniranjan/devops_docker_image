@@ -22,23 +22,23 @@ ADD gitconfig /var/jenkins_home/.gitconfig
 # Install jenkins plugins
 RUN \
     chown jenkins:jenkins /var/jenkins_home/.gitconfig && \
-# # Install serverspec
-#     apt-get install -y --no-install-recommends ruby rake && \
-#     echo "gem: --no-rdoc --no-ri" >> /etc/gemrc && \
-#     gem install serverspec -v 2.39.1 && chmod 755 /usr/sbin/run_serverspec.sh && \
-# 
-# # Install basic packages
-     apt-get install -y netcat
+# Install serverspec
+    apt-get install -y --no-install-recommends ruby rake && \
+    echo "gem: --no-rdoc --no-ri" >> /etc/gemrc && \
+    gem install serverspec -v 2.39.1 && chmod 755 /usr/sbin/run_serverspec.sh && \
+ 
+    # Install basic packages
+    apt-get install -y netcat
 
 user jenkins
 
 WORKDIR /var/jenkins_home
 
 # # Verify docker image
-RUN java -version && java -version 2>&1 | grep 1.8.0 && \
-#     ruby --version && rake --version && gem list server && gem --version && \
-#     ruby --version | grep "2.1.5" && gem --version | grep "2.2.2" && \
-#     rake --version | grep "10.3.2" && gem list serverspec | grep "2.39.1" && \
+RUN \
+     ruby --version && rake --version && gem list server && gem --version && \
+     ruby --version | grep "2.1.5" && gem --version | grep "2.2.2" && \
+     rake --version | grep "10.3.2" && gem list serverspec | grep "2.39.1"
 
 HEALTHCHECK --interval=5m --timeout=3s \
             CMD curl -I http://localhost:8080 | grep "HTTP/1.1 403 Forbidden" || exit 1
